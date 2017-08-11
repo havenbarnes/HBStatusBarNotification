@@ -1,7 +1,7 @@
 {
   "name": "HBStatusBarNotification",
   "version": "0.1.0",
-  "summary": "A short description of HBStatusBarNotification.",
+  "summary": "An extremely lightweight solution to dispatching status bar notifications from anywhere in your iOS application.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/havenbarnes/HBStatusBarNotification",
   "license": {

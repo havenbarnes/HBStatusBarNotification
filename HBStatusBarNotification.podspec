@@ -11,14 +11,10 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = 'An extremely lightweight solution to dispatching status bar notifications from anywhere in your iOS application.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+HBStatusBarNotification provides a simple one-liner for dispatching a text-based notification that will overlay the status bar for a short duration. It offers a range of customization options so that you can make the notification appear however you would like it to.
+
+    I made this because it's something a lot of iOS developers want in their application, but I found a lot of the existing options require more code and offer less customization. I wanted a solution that looked like it came from the same developer and wasn't obviously a library that I had dragged into my project.
                        DESC
 
   s.homepage         = 'https://github.com/havenbarnes/HBStatusBarNotification'

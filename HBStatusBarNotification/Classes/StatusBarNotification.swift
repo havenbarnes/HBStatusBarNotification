@@ -7,17 +7,39 @@
 //
 import UIKit
 
-class StatusBarNotification: UILabel {
+public class HBStatusBarNotification: UILabel {
     
-    var kNotificationHeight: CGFloat = 20
-    var kNotificationFont: UIFont = UIFont(name: ".SFUIDisplay-Heavy", size: 14)!
-    var kNotificationDuration: TimeInterval = 3.0
-    var kLightStatusBar = false
-    var notificationWindow = UIWindow()
-    
+    private var kNotificationHeight: CGFloat = 20
+    private var kNotificationFont: UIFont = UIFont(name: ".SFUIDisplay-Medium", size: 14)!
+    private var kNotificationDuration: TimeInterval = 3.0
+    private var kLightStatusBar = false
+    private var notificationWindow = UIWindow()
 
-    init(message: String, color: UIColor, lightStatusBar: Bool = false, duration: TimeInterval = 3.0, font: UIFont = UIFont(name: ".SFUIDisplay-Heavy", size: 14)!,
-         notificationHeight: CGFloat = 20) {
+    /**
+     Initialize a status bar notification with a range 
+     of customization options.
+     
+     - parameter message: A string message that you want displayed in the notification.
+     - parameter backgroundColor: The desired color for the background of the notification.
+     - parameter textColor: The desired color for text content of the notification.
+                            Defaults to white.
+     - parameter statusBarStyle: The status bar style of the view on which the notification
+                           will be displayed. Keeps the animations seamless.
+                                 Defaults to dark status bar.
+     - parameter duration: The duration that the notification should display.
+                           Defaults to 3 seconds.
+     - parameter font: The font for the text content of the notification.
+                       Defaults to San Francisco Medium, size 14
+     - parameter notificationHeight: The height of the notification's frame.
+                                     Defaults to 20, the size of a standard status bar.
+     */
+    public init(message: String,
+                backgroundColor: UIColor,
+                textColor: UIColor = UIColor.white,
+                statusBarStyle: UIStatusBarStyle = .default,
+                duration: TimeInterval = 3.0,
+                font: UIFont = UIFont(name: ".SFUIDisplay-Medium", size: 14)!,
+                notificationHeight: CGFloat = 20) {
         
         self.kNotificationDuration = duration
         self.kNotificationFont = font
@@ -31,27 +53,27 @@ class StatusBarNotification: UILabel {
         notificationWindow.isHidden = false
         notificationWindow.isUserInteractionEnabled = false
         
-        let viewController = StatusBarNotificationViewController(prefersLightStatusBarStyle: lightStatusBar)
+        let viewController = StatusBarNotificationViewController(statusBarStyle: statusBarStyle)
         
         viewController.view.frame = notificationWindow.frame
         viewController.view.backgroundColor = UIColor.clear
         viewController.setNeedsStatusBarAppearanceUpdate()
         notificationWindow.rootViewController = viewController
         
-        self.backgroundColor = color
+        self.backgroundColor = backgroundColor
         self.font = kNotificationFont
-        self.textColor = UIColor.white
+        self.textColor = textColor
         self.textAlignment = .center
         self.text = message
         viewController.view.addSubview(self)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializeNotificationWindow()
     }
     
-    func initializeNotificationWindow() {
+    private func initializeNotificationWindow() {
         let appDelegate = UIApplication.shared.delegate
         guard let wrappedWindow = appDelegate?.window else {
             print("StatusBarNotification dispatch failed - No UIWindow found for application")
@@ -64,7 +86,8 @@ class StatusBarNotification: UILabel {
         notificationWindow = UIWindow(frame: (window.frame))
     }
     
-    func show() {
+    /// Called to dispatch the notification
+    public func show() {
         self.notificationWindow.makeKeyAndVisible()
         UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.kNotificationHeight)
@@ -72,8 +95,9 @@ class StatusBarNotification: UILabel {
             self.hide()
         })
     }
-    
-    func hide() {
+   
+    /// Hides the notification after designated duration
+    private func hide() {
         UIView.animate(withDuration: 0.3, delay: kNotificationDuration, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.frame = CGRect(x: 0, y: -self.kNotificationHeight, width: UIScreen.main.bounds.width, height: self.kNotificationHeight)
         }, completion: { complete in
@@ -82,21 +106,20 @@ class StatusBarNotification: UILabel {
     }
 }
 
-class StatusBarNotificationViewController: UIViewController {
+public class StatusBarNotificationViewController: UIViewController {
     
-    var prefersLightStatusBarStyle: Bool = false
+    private var statusBarStyle: UIStatusBarStyle = .default
     
-    init(prefersLightStatusBarStyle: Bool) {
+    public init(statusBarStyle: UIStatusBarStyle) {
         super.init(nibName: nil, bundle: nil)
-        self.prefersLightStatusBarStyle = prefersLightStatusBarStyle
+        self.statusBarStyle = statusBarStyle
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        let style: UIStatusBarStyle = prefersLightStatusBarStyle ? .lightContent : .default
-        return style
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        return statusBarStyle
     }
 }
