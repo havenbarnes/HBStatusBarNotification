@@ -10,9 +10,13 @@ import UIKit
 public class HBStatusBarNotification: UILabel {
     
     private var kNotificationHeight: CGFloat = 20
+    
     private var kNotificationFont: UIFont = UIFont(name: ".SFUIDisplay-Medium", size: 14)!
+    
     private var kNotificationDuration: TimeInterval = 3.0
+    
     private var kLightStatusBar = false
+    
     private var notificationWindow = UIWindow()
 
     /**
@@ -65,14 +69,15 @@ public class HBStatusBarNotification: UILabel {
         self.textColor = textColor
         self.textAlignment = .center
         self.text = message
+        
         viewController.view.addSubview(self)
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initializeNotificationWindow()
     }
     
+    /// Initializes the new UIWindow that will be used for overlay
     private func initializeNotificationWindow() {
         let appDelegate = UIApplication.shared.delegate
         guard let wrappedWindow = appDelegate?.window else {
