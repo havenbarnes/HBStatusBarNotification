@@ -1,25 +1,132 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="HBStatusBarNotification_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hello World!" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1A2-UQ-AMf">
+                                <rect key="frame" x="57.5" y="311" width="260" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="j9W-Di-UQH"/>
+                                    <constraint firstAttribute="height" constant="45" id="qLQ-f7-2gf"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgh-zM-1p9" userLabel="Underline">
+                                <rect key="frame" x="57.5" y="354" width="260" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="tkt-ey-pqn"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0C-ML-7iG">
+                                <rect key="frame" x="107" y="386" width="160" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="1be-sP-E9y"/>
+                                    <constraint firstAttribute="height" constant="40" id="dMt-0K-p3F"/>
+                                </constraints>
+                                <state key="normal" title="Normal Notification">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="normalNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cfV-74-5ts"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndf-kg-Ypy">
+                                <rect key="frame" x="107" y="446" width="160" height="40"/>
+                                <color key="backgroundColor" red="0.83529411764705885" green="0.396078431372549" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1lF-fW-NJn"/>
+                                    <constraint firstAttribute="width" constant="160" id="uUX-WS-GlB"/>
+                                </constraints>
+                                <state key="normal" title="Longer Notification">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="longerNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="WAt-L4-1A9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xos-yI-ZFd">
+                                <rect key="frame" x="107" y="506" width="160" height="40"/>
+                                <color key="backgroundColor" red="0.090196078431372548" green="0.83137254901960778" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="bWq-dG-fhM"/>
+                                    <constraint firstAttribute="height" constant="40" id="e2M-1z-a5l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal" title="Bigger Notification">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="biggerNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="M6i-OT-wXq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Notification Text:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOn-hk-93f">
+                                <rect key="frame" x="100" y="286" width="174.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xos-yI-ZFd" firstAttribute="centerX" secondItem="Ndf-kg-Ypy" secondAttribute="centerX" id="1MC-cX-J7f"/>
+                            <constraint firstItem="1A2-UQ-AMf" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="9Pc-Wt-aJ6"/>
+                            <constraint firstItem="Hgh-zM-1p9" firstAttribute="bottom" secondItem="1A2-UQ-AMf" secondAttribute="bottom" id="BJs-tX-EaI"/>
+                            <constraint firstItem="KOn-hk-93f" firstAttribute="centerX" secondItem="1A2-UQ-AMf" secondAttribute="centerX" id="D3w-SN-FQe"/>
+                            <constraint firstItem="Ndf-kg-Ypy" firstAttribute="top" secondItem="h0C-ML-7iG" secondAttribute="bottom" constant="20" id="Kbp-U5-II6"/>
+                            <constraint firstItem="Hgh-zM-1p9" firstAttribute="leading" secondItem="1A2-UQ-AMf" secondAttribute="leading" id="KpZ-Lr-6o6"/>
+                            <constraint firstItem="h0C-ML-7iG" firstAttribute="centerX" secondItem="1A2-UQ-AMf" secondAttribute="centerX" id="Rld-4a-HWX"/>
+                            <constraint firstItem="Ndf-kg-Ypy" firstAttribute="centerX" secondItem="h0C-ML-7iG" secondAttribute="centerX" id="SOW-hy-dde"/>
+                            <constraint firstItem="Xos-yI-ZFd" firstAttribute="top" secondItem="Ndf-kg-Ypy" secondAttribute="bottom" constant="20" id="X84-DX-ekE"/>
+                            <constraint firstItem="1A2-UQ-AMf" firstAttribute="top" secondItem="KOn-hk-93f" secondAttribute="bottom" constant="4" id="ddb-kH-c09"/>
+                            <constraint firstItem="Hgh-zM-1p9" firstAttribute="trailing" secondItem="1A2-UQ-AMf" secondAttribute="trailing" id="j2w-dY-yA5"/>
+                            <constraint firstItem="1A2-UQ-AMf" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="pxK-Ny-Cze"/>
+                            <constraint firstItem="h0C-ML-7iG" firstAttribute="top" secondItem="1A2-UQ-AMf" secondAttribute="bottom" constant="30" id="wGm-bA-Umr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="1A2-UQ-AMf" id="drQ-oh-LW6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="93.599999999999994" y="38.23088455772114"/>
         </scene>
     </scenes>
 </document>

@@ -9,13 +9,9 @@ import UIKit
 
 public class HBStatusBarNotification: UILabel {
     
-    private var kNotificationHeight: CGFloat = 20
+    private var kNotificationHeight: CGFloat
     
-    private var kNotificationFont: UIFont = UIFont(name: ".SFUIDisplay-Medium", size: 14)!
-    
-    private var kNotificationDuration: TimeInterval = 3.0
-    
-    private var kLightStatusBar = false
+    private var kNotificationDuration: TimeInterval
     
     private var notificationWindow = UIWindow()
 
@@ -29,12 +25,12 @@ public class HBStatusBarNotification: UILabel {
                             Defaults to white.
      - parameter statusBarStyle: The status bar style of the view on which the notification
                            will be displayed. Keeps the animations seamless.
-                                 Defaults to dark status bar.
+                           Defaults to dark status bar.
      - parameter duration: The duration that the notification should display.
                            Defaults to 3 seconds.
      - parameter font: The font for the text content of the notification.
                        Defaults to San Francisco Medium, size 14
-     - parameter notificationHeight: The height of the notification's frame.
+     - parameter height: The height of the notification's frame.
                                      Defaults to 20, the size of a standard status bar.
      */
     public init(message: String,
@@ -42,12 +38,11 @@ public class HBStatusBarNotification: UILabel {
                 textColor: UIColor = UIColor.white,
                 statusBarStyle: UIStatusBarStyle = .default,
                 duration: TimeInterval = 3.0,
-                font: UIFont = UIFont(name: ".SFUIDisplay-Medium", size: 14)!,
-                notificationHeight: CGFloat = 20) {
+                font: UIFont = UIFont(name: ".SFUIDisplay-Bold", size: 14)!,
+                height: CGFloat = 20) {
         
         self.kNotificationDuration = duration
-        self.kNotificationFont = font
-        self.kNotificationHeight = notificationHeight
+        self.kNotificationHeight = height
         
         super.init(frame: CGRect(x: 0, y: -self.kNotificationHeight, width: UIScreen.main.bounds.width, height: kNotificationHeight))
         
@@ -57,7 +52,7 @@ public class HBStatusBarNotification: UILabel {
         notificationWindow.isHidden = false
         notificationWindow.isUserInteractionEnabled = false
         
-        let viewController = StatusBarNotificationViewController(statusBarStyle: statusBarStyle)
+        let viewController = NotificationViewController(statusBarStyle: statusBarStyle)
         
         viewController.view.frame = notificationWindow.frame
         viewController.view.backgroundColor = UIColor.clear
@@ -65,16 +60,23 @@ public class HBStatusBarNotification: UILabel {
         notificationWindow.rootViewController = viewController
         
         self.backgroundColor = backgroundColor
-        self.font = kNotificationFont
+        self.font = font
         self.textColor = textColor
         self.textAlignment = .center
         self.text = message
+        self.numberOfLines = 1
+        self.minimumScaleFactor = 0.25
+        self.adjustsFontSizeToFitWidth = true
         
         viewController.view.addSubview(self)
     }
 
+    /// Required initializer. Please use the provided initializer in HBStatusBarNotification.swift
     required public init?(coder aDecoder: NSCoder) {
+        kNotificationHeight = 20
+        kNotificationDuration = 3
         super.init(coder: aDecoder)
+        fatalError("Please use the provided initializer above.")
     }
     
     /// Initializes the new UIWindow that will be used for overlay
@@ -84,11 +86,11 @@ public class HBStatusBarNotification: UILabel {
             print("StatusBarNotification dispatch failed - No UIWindow found for application")
             return
         }
-        guard let window = wrappedWindow else {
+        guard let unwrappedWindow = wrappedWindow else {
             print("StatusBarNotification dispatch failed - No UIWindow found for application")
             return
         }
-        notificationWindow = UIWindow(frame: (window.frame))
+        notificationWindow = UIWindow(frame: (unwrappedWindow.frame))
     }
     
     /// Called to dispatch the notification
@@ -111,16 +113,27 @@ public class HBStatusBarNotification: UILabel {
     }
 }
 
-public class StatusBarNotificationViewController: UIViewController {
+extension HBStatusBarNotification {
     
-    private var statusBarStyle: UIStatusBarStyle = .default
+    /// Provides left and right text margins
+    override public func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5)
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+    }
+}
+
+public class NotificationViewController: UIViewController {
+    
+    /// Preferred status bar style for overlay. Keeps transitions seamless
+    private var statusBarStyle: UIStatusBarStyle
     
     public init(statusBarStyle: UIStatusBarStyle) {
-        super.init(nibName: nil, bundle: nil)
         self.statusBarStyle = statusBarStyle
+        super.init(nibName: nil, bundle: nil)
     }
     
     public required init?(coder aDecoder: NSCoder) {
+        self.statusBarStyle = .default
         super.init(coder: aDecoder)
     }
     
