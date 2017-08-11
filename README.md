@@ -17,7 +17,14 @@ HBStatusBarNotification(message: "Internet Connection Lost", backgroundColor: UI
 Optionally, you can customize any combination of the other appearances / behaviors:
 
 ```swift 
-HBStatusBarNotification(message: "Internet Connected Lost", backgroundColor: UIColor.black, textColor: UIColor.red, statusBarStyle: .lightContent, duration: 6.0, font: UIFont(name: ".SFUIDisplay-Heavy", size: 10)!, notificationHeight: 40).show()
+let notification = HBStatusBarNotification(message: "Internet Connected Lost", 
+                        backgroundColor: UIColor.black, 
+                        textColor: UIColor.red, 
+                        statusBarStyle: .lightContent, 
+                        duration: 6.0, 
+                        font: UIFont(name: ".SFUIDisplay-Heavy", size: 10)!, 
+                        notificationHeight: 40)
+notification.show()
 ```
 
 
