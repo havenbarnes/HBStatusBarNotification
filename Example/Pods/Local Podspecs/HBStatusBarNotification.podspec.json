@@ -1,0 +1,22 @@
+{
+  "name": "HBStatusBarNotification",
+  "version": "0.1.0",
+  "summary": "A short description of HBStatusBarNotification.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/havenbarnes/HBStatusBarNotification",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "havenbarnes": "haven38@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/havenbarnes/HBStatusBarNotification.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "HBStatusBarNotification/Classes/**/*"
+}

@@ -1,0 +1,6 @@
+framework module HBStatusBarNotification {
+  umbrella header "HBStatusBarNotification-umbrella.h"
+
+  export *
+  module * { export * }
+}
