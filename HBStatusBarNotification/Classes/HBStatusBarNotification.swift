@@ -1,9 +1,9 @@
 //
 //  StatusBarNotification.swift
-//  Funnel
+//  HBStatusBarNotification
 //
-//  Created by Haven Barnes on 9/27/16.
-//  Copyright © 2016 Funnel. All rights reserved.
+//  Created by Haven Barnes on 8/11/17.
+//  Copyright © 2017 Haven Barnes. All rights reserved.
 //
 import UIKit
 

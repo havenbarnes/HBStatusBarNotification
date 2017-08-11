@@ -27,7 +27,7 @@ let notification = HBStatusBarNotification(message: "Internet Connection Lost",
 notification.show()
 ```
 
-The notification will also size down longer strings regardless of the font size specified.
+The notification will attempt to size down longer strings if they would not fit the width of the screen with the specified font size.
 
 ## Example
 
