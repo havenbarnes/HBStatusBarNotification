@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HBStatusBarNotification'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'An extremely lightweight solution to dispatching status bar notifications from anywhere in your iOS application.'
 
   s.description      = <<-DESC
@@ -33,6 +33,5 @@ HBStatusBarNotification provides a simple one-liner for dispatching a text-based
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  # s.frameworks = 'UIKit'
 end

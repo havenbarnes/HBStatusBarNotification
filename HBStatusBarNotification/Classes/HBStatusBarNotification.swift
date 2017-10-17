@@ -31,7 +31,9 @@ public class HBStatusBarNotification: UILabel {
      - parameter font: The font for the text content of the notification.
                        Defaults to San Francisco Medium, size 14
      - parameter height: The height of the notification's frame.
-                                     Defaults to 20, the size of a standard status bar.
+                         Defaults to 20, the size of a standard status bar.
+     - parameter autorotates: Whether the notification should rotate with device.
+                         Defaults to true.
      */
     public init(message: String,
                 backgroundColor: UIColor,
@@ -39,7 +41,8 @@ public class HBStatusBarNotification: UILabel {
                 statusBarStyle: UIStatusBarStyle = .default,
                 duration: TimeInterval = 3.0,
                 font: UIFont = UIFont(name: ".SFUIDisplay-Bold", size: 14)!,
-                height: CGFloat = 20) {
+                height: CGFloat = 20,
+                autorotates: Bool = true) {
         
         self.kNotificationDuration = duration
         self.kNotificationHeight = height
@@ -52,7 +55,7 @@ public class HBStatusBarNotification: UILabel {
         notificationWindow.isHidden = false
         notificationWindow.isUserInteractionEnabled = false
         
-        let viewController = NotificationViewController(statusBarStyle: statusBarStyle)
+        let viewController = NotificationViewController(statusBarStyle: statusBarStyle, autorotates: autorotates)
         
         viewController.view.frame = notificationWindow.frame
         viewController.view.backgroundColor = UIColor.clear
@@ -127,17 +130,27 @@ public class NotificationViewController: UIViewController {
     /// Preferred status bar style for overlay. Keeps transitions seamless
     private var statusBarStyle: UIStatusBarStyle
     
-    public init(statusBarStyle: UIStatusBarStyle) {
+    /// Boolean that indicates whether view controller autorotates
+    private var autorotates: Bool
+    
+    public init(statusBarStyle: UIStatusBarStyle = .default,
+                autorotates: Bool = true) {
         self.statusBarStyle = statusBarStyle
+        self.autorotates = autorotates
         super.init(nibName: nil, bundle: nil)
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        self.statusBarStyle = .default
+        statusBarStyle = .default
+        autorotates = true
         super.init(coder: aDecoder)
     }
     
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         return statusBarStyle
+    }
+    
+    public override var shouldAutorotate: Bool {
+        return autorotates
     }
 }
