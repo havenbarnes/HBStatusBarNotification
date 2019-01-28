@@ -4,5 +4,4 @@ target 'HBStatusBarNotification_Example' do
   pod 'HBStatusBarNotification', :path => '../'
 
   platform :ios, '11.0'
-
 end

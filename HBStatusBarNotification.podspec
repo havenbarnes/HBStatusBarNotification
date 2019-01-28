@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HBStatusBarNotification'
-  s.version          = '1.0.1'
+  s.version          = '1.1.0'
   s.summary          = 'An extremely lightweight solution to dispatching status bar notifications from anywhere in your iOS application.'
 
   s.description      = <<-DESC
@@ -24,7 +24,7 @@ HBStatusBarNotification provides a simple one-liner for dispatching a text-based
   s.source           = { :git => 'https://github.com/havenbarnes/HBStatusBarNotification.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/havenb3'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'HBStatusBarNotification/Classes/**/*'
   

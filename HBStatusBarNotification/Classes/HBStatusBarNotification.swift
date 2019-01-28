@@ -7,14 +7,24 @@
 //
 import UIKit
 
-public class HBStatusBarNotification: UILabel {
+@available(iOS 11.0, *)
+public class HBStatusBarNotification: UITextField {
     
-    private var kNotificationHeight: CGFloat
+    private var kNotificationHeight: CGFloat = 0
+    private var kNotificationDuration: TimeInterval = 0.0
+    private var notificationWindow: UIWindow!
     
-    private var kNotificationDuration: TimeInterval
+    private let defaultNotchlessHeight: CGFloat = 20
+    private let defaultNotchHeight: CGFloat = 60
     
-    private var notificationWindow = UIWindow()
+    private var deviceHasNotch: Bool {
+        return UIApplication.shared.keyWindow?.safeAreaInsets.top != 20
+    }
 
+    private var defaultNotificationHeight: CGFloat {
+        return deviceHasNotch ? defaultNotchHeight : defaultNotchlessHeight
+    }
+    
     /**
      Initialize a status bar notification with a range 
      of customization options.
@@ -31,7 +41,7 @@ public class HBStatusBarNotification: UILabel {
      - parameter font: The font for the text content of the notification.
                        Defaults to San Francisco Medium, size 14
      - parameter height: The height of the notification's frame.
-                         Defaults to 20, the size of a standard status bar.
+                         Defaults to the sizes appropriate for device status bar area.
      - parameter autorotates: Whether the notification should rotate with device.
                          Defaults to true.
      */
@@ -40,36 +50,36 @@ public class HBStatusBarNotification: UILabel {
                 textColor: UIColor = UIColor.white,
                 statusBarStyle: UIStatusBarStyle = .default,
                 duration: TimeInterval = 3.0,
-                font: UIFont = UIFont(name: ".SFUIDisplay-Bold", size: 14)!,
-                height: CGFloat = 20,
+                font: UIFont = UIFont(name: ".SFUIDisplay-Medium", size: 14)!,
+                height: CGFloat? = nil,
                 autorotates: Bool = true) {
         
+        super.init(frame: CGRect(x: 0, y: -self.kNotificationHeight, width: UIScreen.main.bounds.width, height: self.kNotificationHeight))
+        
+        self.kNotificationHeight = height ?? defaultNotificationHeight
         self.kNotificationDuration = duration
-        self.kNotificationHeight = height
         
-        super.init(frame: CGRect(x: 0, y: -self.kNotificationHeight, width: UIScreen.main.bounds.width, height: kNotificationHeight))
+        let frame = UIApplication.shared.keyWindow?.frame
+        self.notificationWindow = UIWindow(frame: (frame ?? CGRect()))
         
-        initializeNotificationWindow()
-        
-        notificationWindow.windowLevel = UIWindowLevelAlert
-        notificationWindow.isHidden = false
-        notificationWindow.isUserInteractionEnabled = false
+        self.notificationWindow.windowLevel = UIWindow.Level.alert
+        self.notificationWindow.isHidden = false
+        self.notificationWindow.isUserInteractionEnabled = false
         
         let viewController = NotificationViewController(statusBarStyle: statusBarStyle, autorotates: autorotates)
-        
         viewController.view.frame = notificationWindow.frame
         viewController.view.backgroundColor = UIColor.clear
         viewController.setNeedsStatusBarAppearanceUpdate()
-        notificationWindow.rootViewController = viewController
+        self.notificationWindow.rootViewController = viewController
         
         self.backgroundColor = backgroundColor
         self.font = font
         self.textColor = textColor
         self.textAlignment = .center
         self.text = message
-        self.numberOfLines = 1
-        self.minimumScaleFactor = 0.25
-        self.adjustsFontSizeToFitWidth = true
+        self.isUserInteractionEnabled = false
+        self.textAlignment = .center
+        self.contentVerticalAlignment = deviceHasNotch ? .bottom : .center
         
         viewController.view.addSubview(self)
     }
@@ -78,28 +88,28 @@ public class HBStatusBarNotification: UILabel {
     required public init?(coder aDecoder: NSCoder) {
         kNotificationHeight = 20
         kNotificationDuration = 3
+        notificationWindow = UIWindow()
         super.init(coder: aDecoder)
-        fatalError("Please use the provided initializer above.")
+        fatalError("Please use the provided initializer in HBStatusBarNotification.swift.")
     }
     
-    /// Initializes the new UIWindow that will be used for overlay
-    private func initializeNotificationWindow() {
-        let appDelegate = UIApplication.shared.delegate
-        guard let wrappedWindow = appDelegate?.window else {
-            print("StatusBarNotification dispatch failed - No UIWindow found for application")
-            return
+    /// Overrides text bounds for proper margin
+    override public func textRect(forBounds bounds: CGRect) -> CGRect {
+        var boundsAdjusted = bounds
+        // Left / Right margins
+        boundsAdjusted.origin.x += 5
+        boundsAdjusted.size.width -= 10
+        // Bottom margin for notch-screened notifications
+        if (deviceHasNotch) {
+            boundsAdjusted.size.height -= 5
         }
-        guard let unwrappedWindow = wrappedWindow else {
-            print("StatusBarNotification dispatch failed - No UIWindow found for application")
-            return
-        }
-        notificationWindow = UIWindow(frame: (unwrappedWindow.frame))
+        return boundsAdjusted
     }
     
     /// Called to dispatch the notification
     public func show() {
         self.notificationWindow.makeKeyAndVisible()
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.kNotificationHeight)
         }, completion: { complete in
             self.hide()
@@ -108,20 +118,11 @@ public class HBStatusBarNotification: UILabel {
    
     /// Hides the notification after designated duration
     private func hide() {
-        UIView.animate(withDuration: 0.3, delay: kNotificationDuration, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: kNotificationDuration, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.frame = CGRect(x: 0, y: -self.kNotificationHeight, width: UIScreen.main.bounds.width, height: self.kNotificationHeight)
         }, completion: { complete in
             self.notificationWindow.isHidden = true
         })
-    }
-}
-
-extension HBStatusBarNotification {
-    
-    /// Provides left and right text margins
-    override public func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5)
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
 }
 
