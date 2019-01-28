@@ -37,20 +37,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func biggerNotificationButtonPressed(_ sender: Any) {
         HBStatusBarNotification(message: textField.text!,
                                 backgroundColor: UIColor("17D412"),
-                                font: UIFont(name: ".SFUIDisplay-Black", size: 14)!,
-                                height: 40.0).show()
+                                font: UIFont(name: ".SFUIDisplay-Black", size: 30)!,
+                                height: 90.0).show()
     }
-    
-    
 }
 
 extension UIColor {
-    convenience init(_ hex: String) {
+    convenience init(_ hex: String?) {
+        guard let hex = hex else {
+            self.init(white: 0.5, alpha: 1)
+            return
+        }
+        
         let hexString = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()
         Scanner(string: hexString).scanHexInt32(&int)
         let a, r, g, b: UInt32
-        switch hexString.characters.count {
+        switch hexString.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
         case 6: // RGB (24-bit)
