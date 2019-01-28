@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HBStatusBarNotification'
-  s.version          = '1.0.1'
+  s.version          = '1.1.0'
   s.summary          = 'An extremely lightweight solution to dispatching status bar notifications from anywhere in your iOS application.'
 
   s.description      = <<-DESC

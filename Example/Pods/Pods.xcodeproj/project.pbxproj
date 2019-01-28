@@ -28,20 +28,20 @@
 
 /* Begin PBXFileReference section */
 		02E9035609A58ACBA57DA5108A4254DC /* Pods-HBStatusBarNotification_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HBStatusBarNotification_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		06C30831C891CF66663EC2FC5C70292C /* HBStatusBarNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HBStatusBarNotification.framework; path = HBStatusBarNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06C30831C891CF66663EC2FC5C70292C /* HBStatusBarNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HBStatusBarNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA0AC1CEE2F3EB43EB8C29315A896A6 /* Pods-HBStatusBarNotification_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HBStatusBarNotification_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		1F259B069EADEF29F0461AC73EB05E84 /* Pods-HBStatusBarNotification_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HBStatusBarNotification_Example-umbrella.h"; sourceTree = "<group>"; };
-		22271F7B5B913B715AA1D7A503798349 /* Pods_HBStatusBarNotification_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HBStatusBarNotification_Example.framework; path = "Pods-HBStatusBarNotification_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22271F7B5B913B715AA1D7A503798349 /* Pods_HBStatusBarNotification_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBStatusBarNotification_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		553AD4EB2F89407E32A3599EFDE340B6 /* Pods-HBStatusBarNotification_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HBStatusBarNotification_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5710EB84CAFD2C551D16496526813B42 /* HBStatusBarNotification-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HBStatusBarNotification-umbrella.h"; sourceTree = "<group>"; };
-		62FA89AC3C88B0D742E3F6BB40801226 /* Pods-HBStatusBarNotification_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HBStatusBarNotification_Example.modulemap"; sourceTree = "<group>"; };
+		62FA89AC3C88B0D742E3F6BB40801226 /* Pods-HBStatusBarNotification_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HBStatusBarNotification_Example.modulemap"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		70A899EE3BBAC4E39744F9C9F20AD901 /* HBStatusBarNotification.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HBStatusBarNotification.xcconfig; sourceTree = "<group>"; };
 		731C4D211B1A89EBC1AF1E44CDB14858 /* HBStatusBarNotification.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HBStatusBarNotification.swift; path = HBStatusBarNotification/Classes/HBStatusBarNotification.swift; sourceTree = "<group>"; };
 		78FCBA4A9360020FC93744A4C7827E45 /* Pods-HBStatusBarNotification_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HBStatusBarNotification_Example-resources.sh"; sourceTree = "<group>"; };
 		882CBA0218A2EF5D82FF3ADD892AE64C /* HBStatusBarNotification-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HBStatusBarNotification-prefix.pch"; sourceTree = "<group>"; };
-		8F29287FAB1EB5987607C8CD497E4392 /* HBStatusBarNotification.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HBStatusBarNotification.modulemap; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8F29287FAB1EB5987607C8CD497E4392 /* HBStatusBarNotification.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HBStatusBarNotification.modulemap; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A26D6347C0D8B767990E7F09A252A890 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2E2BB64D8372CC2F5657483622220DF /* Pods-HBStatusBarNotification_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HBStatusBarNotification_Example-dummy.m"; sourceTree = "<group>"; };
 		D9E4D0BD60C9A4684C727B6D212C7FF6 /* Pods-HBStatusBarNotification_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HBStatusBarNotification_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -102,7 +102,6 @@
 				2AC09ED412EAE840E2DC402E12A0AE98 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				0DA5DA9FA01EB0AA65CED707B3CA60CD /* Products */,
-				5EA4F9FB40E07545A59862D1825F72DE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +122,7 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EA4F9FB40E07545A59862D1825F72DE /* Targets Support Files */,
 				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
 			);
 			name = Frameworks;
@@ -228,7 +228,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 1010;
+				TargetAttributes = {
+					9864AE8DC39D54CE8D8718D7264B760D = {
+						LastSwiftMigration = 1010;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -292,6 +297,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -299,6 +305,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -357,7 +364,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -389,7 +396,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -410,6 +417,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -417,6 +425,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
